@@ -1,0 +1,17 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v1-3" author="Irina Cherednichenko">
+        <createTable tableName="house_residents">
+            <column name="house_id" type="bigint">
+                <constraints  nullable="false" foreignKeyName="fk_house_id" references="houses(house_id)"/>
+            </column>
+            <column name="resident_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_resident_id" references="users(user_id)"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="house_residents" columnNames="house_id, resident_id" />
+    </changeSet>
+</databaseChangeLog>

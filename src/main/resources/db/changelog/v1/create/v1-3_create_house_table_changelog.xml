@@ -1,0 +1,19 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v1-2" author="Irina Cherednichenko">
+        <createTable tableName="houses">
+            <column name="house_id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="address" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="owner_id" type="bigint">
+                <constraints nullable="false" foreignKeyName="fk_owner_user" references="users(user_id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,25 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v1-1" author="Irina Cherednichenko">
+        <createTable tableName="users">
+            <column name="user_id" type="bigint" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="password" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="enabled" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="age" type="int">
+            </column>
+        </createTable>
+        <addUniqueConstraint tableName="users" columnNames="username" constraintName="uk_users_username"/>
+    </changeSet>
+</databaseChangeLog>
